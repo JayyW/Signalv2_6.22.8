@@ -42,6 +42,8 @@ import org.whispersystems.signalservice.api.SignalServiceAccountManager;
 import org.whispersystems.signalservice.api.push.exceptions.NotFoundException;
 import org.whispersystems.signalservice.internal.push.DeviceLimitExceededException;
 
+import java.nio.charset.StandardCharsets;
+
 import java.io.IOException;
 
 public class DeviceActivity extends PassphraseRequiredActivity
@@ -99,8 +101,8 @@ public class DeviceActivity extends PassphraseRequiredActivity
 
     //----- For Debugging -----
     Context context = DeviceActivity.this;
-    IdentityKeyPair  identityKeyPair = IdentityKeyUtil.getIdentityKeyPair(context);
-    Optional<byte[]> profileKey = Optional.of(ProfileKeyUtil.getProfileKey(context));
+    IdentityKeyPair  identityKeyPair = SignalStore.account().getIdentityKeyPair();
+    ProfileKey      profileKey         = ProfileKeyUtil.getSelfProfileKey();
     Log.d("ASA", "Identity private: " + bytesToHex(identityKeyPair.getPrivateKey().serialize()));
     Log.d("ASA", "Identity public: " + bytesToHex(identityKeyPair.getPublicKey().serialize()));
     if(profileKey.isPresent()){
