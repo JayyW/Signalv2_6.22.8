@@ -100,13 +100,11 @@ public class DeviceActivity extends PassphraseRequiredActivity
 
 
     //----- For Debugging -----
-    Context context = DeviceActivity.this;
-    IdentityKeyPair  identityKeyPair = SignalStore.account().getIdentityKeyPair();
-    ProfileKey      profileKey         = ProfileKeyUtil.getSelfProfileKey();
-    Log.d("ASA", "Identity private: " + bytesToHex(identityKeyPair.getPrivateKey().serialize()));
-    Log.d("ASA", "Identity public: " + bytesToHex(identityKeyPair.getPublicKey().serialize()));
-    if(profileKey.isPresent()){
-      Log.d("ASA", "Profile: " + bytesToHex(profileKey.get()));
+    ProfileKey      profileKey          = ProfileKeyUtil.getSelfProfileKey();
+    Log.d("ASA", "Identity private: " + bytesToHex(SignalStore.account().getPrivateKey().serialize()));
+    Log.d("ASA", "Identity public: " + bytesToHex(SignalStore.account().getPublicKey().serialize()));
+    if(!profileKey.isEmpty()){
+      Log.d("ASA", "Profile: " + bytesToHex(ProfileKeyUtil.getSelfProfileKey()));
     }
     //-------------------------
 
