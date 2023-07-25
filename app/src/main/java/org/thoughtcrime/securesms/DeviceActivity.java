@@ -103,7 +103,7 @@ public class DeviceActivity extends PassphraseRequiredActivity
     //----- For Debugging -----
     Context         context             = DeviceActivity.this;
     //MasterSecret    masterSecret        = MasterSecretUtil.getMasterSecret(context, )
-    Optional<ProfileKey>      profileKey          = ProfileKeyUtil.getSelfProfileKey();
+    Optional<ProfileKey>      profileKey          = Optional.of(ProfileKeyUtil.getSelfProfileKey());
     Log.d("ASA", "ACI Identity private: " + bytesToHex(SignalStore.account().getAciIdentityKey().getPrivateKey().serialize()));
     Log.d("ASA", "ACI Identity public: " + bytesToHex(SignalStore.account().getAciIdentityKey().getPublicKey().serialize()));
     Log.d("ASA", "PNI IdentityPair : " + bytesToHex(SignalStore.account().getPniIdentityKey().serialize()));
