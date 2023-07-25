@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
+import java.util.Optional;
 
 import org.signal.core.util.ThreadUtil;
 import org.signal.core.util.logging.Log;
