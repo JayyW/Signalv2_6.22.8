@@ -104,9 +104,16 @@ public class DeviceActivity extends PassphraseRequiredActivity
     Context         context             = DeviceActivity.this;
     //MasterSecret    masterSecret        = MasterSecretUtil.getMasterSecret(context, )
     Optional<ProfileKey>      profileKey          = Optional.of(ProfileKeyUtil.getSelfProfileKey());
+    Log.d("ASA", "---HEX---")
     Log.d("ASA", "ACI Identity private: " + bytesToHex(SignalStore.account().getAciIdentityKey().getPrivateKey().serialize()));
     Log.d("ASA", "ACI Identity public: " + bytesToHex(SignalStore.account().getAciIdentityKey().getPublicKey().serialize()));
-    Log.d("ASA", "PNI IdentityPair : " + bytesToHex(SignalStore.account().getPniIdentityKey().serialize()));
+    Log.d("ASA", "PNI Identity private : " + bytesToHex(SignalStore.account().getPniIdentityKey().getPrivateKey().serialize()));
+    Log.d("ASA", "PNI Identity public : " + bytesToHex(SignalStore.account().getPniIdentityKey().getPublicKey().serialize()));
+    Log.d("ASA", "---Key Objects---")
+    Log.d("ASA", "ACI Identity private: " + SignalStore.account().getAciIdentityKey().getPrivateKey());
+    Log.d("ASA", "ACI Identity public: " + SignalStore.account().getAciIdentityKey().getPublicKey());
+    Log.d("ASA", "PNI Identity private : " + SignalStore.account().getPniIdentityKey().getPrivateKey());
+    Log.d("ASA", "PNI Identity public : " + SignalStore.account().getPniIdentityKey().getPublicKey());
     if(!profileKey.isPresent()){
       Log.d("ASA", "Profile: " + bytesToHex(ProfileKeyUtil.getSelfProfileKey().serialize()));
     }
