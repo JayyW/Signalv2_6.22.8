@@ -102,15 +102,16 @@ public class DeviceActivity extends PassphraseRequiredActivity
 
     //----- For Debugging -----
     Context         context             = DeviceActivity.this;
-    //MasterSecret    masterSecret        = MasterSecretUtil.getMasterSecret(context, )
-    Optional<ProfileKey>      profileKey          = Optional.of(ProfileKeyUtil.getSelfProfileKey());
+    SignalServiceAccountManager accountManager   = ApplicationDependencies.getSignalServiceAccountManager().
+    //TODO
+    //implemented in WebSocketConnection
     Log.d("ASA", "---HEX---");
     Log.d("ASA", "ACI Identity private: " + bytesToHex(SignalStore.account().getAciIdentityKey().getPrivateKey().serialize()));
     Log.d("ASA", "ACI Identity public: " + bytesToHex(SignalStore.account().getAciIdentityKey().getPublicKey().serialize()));
-    Log.d("ASA", "PNI Identity private : " + bytesToHex(SignalStore.account().getPniIdentityKey().getPrivateKey().serialize()));
-    Log.d("ASA", "PNI Identity public : " + bytesToHex(SignalStore.account().getPniIdentityKey().getPublicKey().serialize()));
-    Log.d("ASA", "ACI: " + bytesToHex(SignalStore.account().getAci().toString().serialize()));
-    Log.d("ASA", "PNI: " + bytesToHex(SignalStore.account().getAci().toString().serialize()));
+    Log.d("ASA", "PNI Identity private: " + bytesToHex(SignalStore.account().getPniIdentityKey().getPrivateKey().serialize()));
+    Log.d("ASA", "PNI Identity public: " + bytesToHex(SignalStore.account().getPniIdentityKey().getPublicKey().serialize()));
+    Log.d("ASA", "ACI: " + bytesToHex(SignalStore.account().getAci().toByteArray()));
+    Log.d("ASA", "PNI: " + bytesToHex(SignalStore.account().getPni().toString().serialize()));
     if(!profileKey.isPresent()){
       Log.d("ASA", "Profile: " + bytesToHex(ProfileKeyUtil.getSelfProfileKey().serialize()));
     }
