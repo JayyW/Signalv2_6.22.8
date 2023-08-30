@@ -87,8 +87,6 @@ public class WebSocketConnection extends WebSocketListener {
                              HealthMonitor healthMonitor,
                              boolean allowStories) {
 
-                              TrustStore trustStore = signalServiceConfigurationSupplier.get().getSignalServiceUrls()[0].getTrustStore();
-                              Log.d("ASA", "TrustStore in WebSocketConnect1: " + trustStore.toString());
     this(name, serviceConfiguration, credentialsProvider, signalAgent, healthMonitor, "", allowStories);
   }
 
@@ -102,7 +100,6 @@ public class WebSocketConnection extends WebSocketListener {
   {
     this.name                = "[" + name + ":" + System.identityHashCode(this) + "]";
     this.trustStore          = serviceConfiguration.getSignalServiceUrls()[0].getTrustStore();
-    Log.d("ASA", "TrustStore in WebSocketConnect2: " + trustStore);
     this.credentialsProvider = credentialsProvider;
     this.signalAgent         = signalAgent;
     this.interceptors        = serviceConfiguration.getNetworkInterceptors();
@@ -112,6 +109,8 @@ public class WebSocketConnection extends WebSocketListener {
     this.webSocketState      = BehaviorSubject.createDefault(WebSocketConnectionState.DISCONNECTED);
     this.allowStories        = allowStories;
     this.serviceUrl          = serviceConfiguration.getSignalServiceUrls()[0];
+
+    Log.d("ASA", "TrustStore in WebSocketConnect2: " + trustStore);
 
     String uri = serviceUrl.getUrl().replace("https://", "wss://").replace("http://", "ws://");
 
