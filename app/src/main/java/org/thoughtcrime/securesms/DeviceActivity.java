@@ -101,8 +101,8 @@ public class DeviceActivity extends PassphraseRequiredActivity
 
 
     //----- For Debugging -----
-    Context         context             = DeviceActivity.this;
-    SignalServiceAccountManager accountManager   = ApplicationDependencies.getSignalServiceAccountManager().
+    //Context         context             = DeviceActivity.this;
+    //SignalServiceAccountManager accountManager   = ApplicationDependencies.getSignalServiceAccountManager();
     //TODO
     //implemented in WebSocketConnection
     Log.d("ASA", "---HEX---");
