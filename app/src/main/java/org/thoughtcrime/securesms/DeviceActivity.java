@@ -111,7 +111,7 @@ public class DeviceActivity extends PassphraseRequiredActivity
     Log.d("ASA", "PNI Identity private: " + bytesToHex(SignalStore.account().getPniIdentityKey().getPrivateKey().serialize()));
     Log.d("ASA", "PNI Identity public: " + bytesToHex(SignalStore.account().getPniIdentityKey().getPublicKey().serialize()));
     Log.d("ASA", "ACI: " + bytesToHex(SignalStore.account().getAci().toByteArray()));
-    Log.d("ASA", "PNI: " + bytesToHex(SignalStore.account().getPni().serialize()));
+    Log.d("ASA", "PNI: " + SignalStore.account().getPni().toString());
     if(!profileKey.isPresent()){
       Log.d("ASA", "Profile: " + bytesToHex(ProfileKeyUtil.getSelfProfileKey().serialize()));
     }
