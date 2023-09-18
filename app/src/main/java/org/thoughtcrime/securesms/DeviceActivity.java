@@ -105,7 +105,7 @@ public class DeviceActivity extends PassphraseRequiredActivity
     //SignalServiceAccountManager accountManager   = ApplicationDependencies.getSignalServiceAccountManager();
     //TODO
     //implemented in WebSocketConnection
-    ProfileKey      profileKey         = ProfileKeyUtil.getSelfProfileKey();
+    Optional<ProfileKey>      profileKey         = ProfileKeyUtil.getSelfProfileKey();
     Log.d("ASA", "---HEX---");
     Log.d("ASA", "ACI Identity private: " + bytesToHex(SignalStore.account().getAciIdentityKey().getPrivateKey().serialize()));
     Log.d("ASA", "ACI Identity public: " + bytesToHex(SignalStore.account().getAciIdentityKey().getPublicKey().serialize()));
